@@ -1,0 +1,28 @@
+.preview {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(300px, 1fr));
+  grid-gap: 30px;
+}
+
+.collection-preview {
+  /* margin: 10px; */
+}
+
+/* @media screen and (max-width: 1250px) {
+  .preview {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .preview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 625px) {
+  .preview {
+    grid-template-columns: repeat(1, 1fr);
+    max-width: 400px;
+  }
+} */

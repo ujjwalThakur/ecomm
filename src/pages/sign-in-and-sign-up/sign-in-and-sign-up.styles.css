@@ -1,0 +1,5 @@
+.sign-in-and-sign-up {
+  display: flex;
+  /* margin: auto; */
+  justify-content: space-evenly;
+}
