@@ -42,9 +42,9 @@ class SignIn extends React.Component{
     }
 
     render(){
-        // if(this.state.redirect){
-        //     return <Redirect to={this.state.redirect} />
-        // }
+        if(this.state.redirect){
+            return <Redirect to={this.state.redirect} />
+        }
         return (
             <div>
                 <h1>I already have an account</h1>
