@@ -8,9 +8,6 @@ import { auth } from '../../firebase/firebase.utils';
 import './header.styles.css';
 
 class Header extends React.Component {
-    constructor(props) {
-        super(props);
-    };
 
     render() {
         const props = this.props;
