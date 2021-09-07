@@ -1,5 +1,6 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import { createUserprofileDocument, auth } from './firebase/firebase.utils';
 
@@ -22,9 +23,6 @@ function HatsPage() {
 }
 
 class App extends React.Component {
-  constructor() {
-    super();
-  }
 
   unsubscribeFromAuth = null;
   componentDidMount() {
@@ -33,7 +31,6 @@ class App extends React.Component {
         const userRef = await createUserprofileDocument(userAuth);
 
         userRef.onSnapshot(snapshot => {
-
           store.dispatch(setCurrentUser(
             {
               id: snapshot.id,
@@ -44,11 +41,11 @@ class App extends React.Component {
       }
 
       else {
-        console.log('dispatching null');
         store.dispatch(setCurrentUser(
           null
-        ))
+        ));
       }
+
     })
   }
 
@@ -62,7 +59,11 @@ class App extends React.Component {
         <Header />
         <Switch>
           <Route exact={true} path='/' component={Homepage} />
-          <Route path='/signin' component={SignInAndSignUp} />
+          <Route path='/signin'
+            render={() => {
+              return this.props.currentUser ?
+                (<Redirect to='/' />) : (<SignInAndSignUp />)
+            }} />
           <Route path='/shop' component={ShopPage} />
           <Route path='/hats' component={HatsPage} />
         </Switch>
@@ -72,7 +73,13 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => (
+  {
+    currentUser: state.user.currentUser
+  }
+);
+
+export default connect(mapStateToProps)(App);
 
 
 

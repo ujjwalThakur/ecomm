@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 import { auth } from '../../firebase/firebase.utils';
-import store from '../../redux/store';
 
 import './header.styles.css';
 
